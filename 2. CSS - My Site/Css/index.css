@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #40514e;
+  /* text-align: center; */
+}
+body {
+  margin: 0;
+  text-align: center;
+  /* font-size: 2em; */
+}
+
+h1 {
+  color: #66bfbf;
+  font-family: 'Dancing Script', cursive;
+  font-size: 5.625rem;
+  margin: 50px auto 0 auto;
+}
+
+h2 {
+  color: #66bfbf;
+  font-size: 2.5rem;
+  font-weight: normal;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+h3 {
+  color: #11999e;
+}
+
+p {
+  line-height: 2;
+}
+
+.profile {
+  width: 30%;
+  margin: auto;
+  line-height: 2;
+}
+
+hr {
+  border: dotted #eaf6f6 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+
+.top-container {
+  background-color: #eaf6f6;
+  /* padding: 60px 60px 60px 0; */
+  position: relative;
+  padding-top: 100px;
+}
+
+.top-right-cloud {
+  position: absolute;
+  top: 50px;
+  right: 300px;
+}
+.bottom-left-cloud {
+  position: absolute;
+  bottom: 400px;
+  left: 300px;
+}
+.mountain {
+  padding-top: 50px;
+}
+.middle-container {
+  margin: 100px 0;
+}
+.skill-row {
+  width: 50%;
+  margin: 100px auto 100px auto;
+  text-align: left;
+  line-height: 2;
+}
+.computer-image {
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+.chillies-image {
+  width: 25%;
+  float: right;
+  margin-left: 30px;
+}
+
+.contact {
+  width: 40%;
+  margin: 40px auto 60px;
+}
+
+.bottom-container {
+  background-color: #66bfbf;
+  color: #11999e;
+  padding: 50px 0 20px;
+}
+
+.btn {
+   background-color: #66bfbf;
+   color: #eaf6f6;
+   border-radius: 8px;
+   border: none;
+   padding: 10px 20px;
+   font-size: 20px;
+}
+
+a {
+  margin: 20px 10px;
+  text-decoration: none;
+  line-height: 2;
+}
+
+a:hover {
+  color: #eaf6f6;
+}
