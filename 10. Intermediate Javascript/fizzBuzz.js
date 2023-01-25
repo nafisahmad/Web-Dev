@@ -4,10 +4,12 @@
 // "fizzBuzz" if the number is divisible by 3 & 5 both.
 
 var output = [];
-var count = 1;
+// var count = 1;
 
-while (count <= 100) {
-  function fizzBuzz() {
+// while (count <= 100) {
+  
+function fizzBuzz() {
+  for (var count = 1; count < 101; count++) {
     if (count % 3 === 0 && count % 5 === 0) {
       output.push('FizzBuzz');
     } else if (count % 3 === 0) {
@@ -17,8 +19,9 @@ while (count <= 100) {
     } else {
       output.push(count);
     }
-    count++;
+    // count++;
   }
-  fizzBuzz();
 }
+fizzBuzz();
 console.log(output);
+// }
