@@ -9,15 +9,11 @@
   text-align: center;
 }
 
-.images {
-  padding: 30px;
-  margin: 50px;
-  
-}
-
 .dice {
   text-align: center;
   display: inline-block;
+  padding: 30px;
+  margin: 0 50px 0 50px;
 }
 
 body {
