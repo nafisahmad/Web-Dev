@@ -1,0 +1,12 @@
+body {
+  /* background-color: red; */
+}
+
+.big-title {
+  color: blueviolet;
+  font-size: 8rem;
+}
+
+.margin-50 {
+  margin: 50px;
+}
