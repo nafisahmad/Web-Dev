@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
+const dotenv = require('dotenv').config();
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.post('/', function (req, res) {
   console.log('Post recieved');
 
   //   logic + api
-  const api = '5c7083bed1dcec5e6f7a03aedd9ae4e0';
+  //   const api = '5c7083bed1dcec5e6f7a03aedd9ae4e0';
+  const api = process.env.API_KEY;
   const unit = 'metric';
   const city = req.body.cityName;
   const url =
@@ -38,7 +40,7 @@ app.post('/', function (req, res) {
       const imageURL = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
 
       res.write(
-        '<h1>Temperature in ' + city + ' is : ' + temp + ' &#8451; </h1>'
+        '<h1>Temperature in ' + city + ' is : ' + temp + '&#8451; </h1>'
       );
 
       res.write('<h2>The scene is currently : ' + weatherDescription + '</h2>');
@@ -47,7 +49,6 @@ app.post('/', function (req, res) {
       // console.log(weatherDescription);
     });
   });
-
   //   res.send('Server Running');
 });
 
