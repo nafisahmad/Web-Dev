@@ -5,6 +5,9 @@ const dotenv = require('dotenv').config();
 
 const app = express();
 
+// to use local css add
+app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
@@ -16,7 +19,6 @@ app.post('/', function (req, res) {
   console.log('Post recieved');
 
   //   logic + api
-  //   const api = '5c7083bed1dcec5e6f7a03aedd9ae4e0';
   const api = process.env.API_KEY;
   const unit = 'metric';
   const city = req.body.cityName;
@@ -49,6 +51,7 @@ app.post('/', function (req, res) {
       // console.log(weatherDescription);
     });
   });
+
   //   res.send('Server Running');
 });
 

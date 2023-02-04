@@ -1,0 +1,39 @@
+* {
+  /* box-sizing: border-box; */
+}
+
+body {
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/527/757/70/aesthetic-neon-wallpaper-preview.jpg');
+  background-size: cover;
+  color: azure;
+}
+
+.input {
+  /* 1 center a div*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 2 */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+
+  /* 3 */
+  /* display: grid;
+  place-items: center; */
+}
+
+#cityInput {
+  padding: 10px;
+  border-radius: 25px;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-align: center;
+}
