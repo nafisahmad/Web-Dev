@@ -6,7 +6,7 @@
 
 <div class="box">
   <!-- Using forEach Method instead of a for loop -->
-  <% newListItems.forEach(function(item){%>
+  <%newListItems.forEach(function(item){%>
   <form action="/delete" method="post">
     <div class="item">
       <input
@@ -17,7 +17,7 @@
       />
       <p><%=item.name%></p>
     </div>
-    <input type="hidden" name="listName" value="<%=listT%>" />
+    <input type="hidden" name="listName" value="<%=listTitle%>"/>
   </form>
   <%})%>
 
