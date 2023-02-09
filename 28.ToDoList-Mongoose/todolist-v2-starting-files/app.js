@@ -87,13 +87,12 @@ app.post('/', function (req, res) {
 });
 
 app.post('/delete', function (req, res) {
-  // console.log(req.body.checkbox);
   const checkedItemId = req.body.checkbox;
+  // console.log(checkedItemId);
+
   Item.findByIdAndRemove(checkedItemId, function (err) {
-    if (!err) {
-      console.log('Successfully deleted checked item');
-      res.redirect('/');
-    }
+    console.log('Successfully deleted checked item.');
+    res.redirect('/');
   });
 });
 
