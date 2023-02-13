@@ -1,4 +1,5 @@
 //jshint esversion:6
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
@@ -6,6 +7,7 @@ const mongoose = require('mongoose');
 const encrypt = require('mongoose-encryption');
 
 const app = express();
+// console.log(process.env.SECRET);
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -15,9 +17,9 @@ app.use(
   })
 );
 
-// COnnecting MongoDB
+// Connecting MongoDB
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/userDB', function () {
+mongoose.connect(process.env.MONGO_URL + 'userDB', function () {
   console.log('connected to MongoDB');
 });
 
@@ -26,8 +28,11 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const secret = 'Thisisalittlesecret';
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password'] });
+// const secret = 'Thisisalittlesecret.';
+userSchema.plugin(encrypt, {
+  secret: process.env.SECRET,
+  encryptedFields: ['password'],
+});
 
 const User = new mongoose.model('User', userSchema);
 
