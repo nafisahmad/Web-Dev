@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   googleId: String,
+  secret: String,
 });
 
 // MONGOOSE-ENCRYPTION FOR PASSWORD
@@ -115,7 +116,7 @@ app.get('/register', function (req, res) {
   res.render('register');
 });
 app.get('/secrets', function (req, res) {
-  User.find({ secret: { $ne: null } }, function (err, foundUsers) {
+  User.find({ "secret": { $ne: null } }, function (err, foundUsers) {
     if (err) {
       console.log(err);
     } else {
