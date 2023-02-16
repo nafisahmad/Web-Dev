@@ -1,7 +1,3 @@
-* {
-  /* box-sizing: border-box; */
-}
-
 body {
   background-image: url('https://c4.wallpaperflare.com/wallpaper/527/757/70/aesthetic-neon-wallpaper-preview.jpg');
   background-size: cover;
@@ -9,7 +5,7 @@ body {
 }
 
 .input {
-  /* 1 center a div*/
+  /* 1 center a div */
   position: absolute;
   top: 50%;
   left: 50%;
