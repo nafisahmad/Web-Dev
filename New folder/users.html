@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>User Details</h1>
+    <label>Filter by Name:</label>
+    <input type="text" id="nameFilter" />
+    <button onclick="applyFilters()">Apply Filters</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+
+    <div id="pagination">
+      <button onclick="previousPage()">Previous Page</button>
+      <span id="currentPage">1</span>
+      <button onclick="nextPage()">Next Page</button>
+    </div>
+
+    <script>
+      let users = [];
+      let filteredUsers = [];
+      let currentPage = 1;
+      const PAGE_SIZE = 10;
+
+      $(document).ready(() => {
+        // Fetch the users from the database using the following Node.js code
+        $.get('/users', (data) => {
+          users = data;
+          filteredUsers = data;
+          renderUsers();
+        });
+      });
+
+      function renderUsers() {
+        const start = (currentPage - 1) * PAGE_SIZE;
+        const end = start + PAGE_SIZE;
+        const usersToRender = filteredUsers.slice(start, end);
+        const tableBody = $('#userTableBody');
+        tableBody.empty();
+        usersToRender.forEach((user) => {
+          const row = $('<tr>');
+          row.append($('<td>').text(user.name));
+          row.append($('<td>').text(user.email));
+          row.append($('<td>').text(user.phone));
+          tableBody.append(row);
+        });
+        $('#currentPage').text(currentPage);
+      }
+
+      function applyFilters() {
+        const nameFilter = $('#nameFilter').val();
+        filteredUsers = users.filter((user) => {
+          return user.name.toLowerCase().includes(nameFilter.toLowerCase());
+        });
+        currentPage = 1;
+        renderUsers();
+      }
+
+      function previousPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          renderUsers();
+        }
+      }
+
+      function nextPage() {
+        const lastPage = Math.ceil(filteredUsers.length / PAGE_SIZE);
+        if (currentPage < lastPage) {
+          currentPage++;
+          renderUsers();
+        }
+      }
+    </script>
+  </body>
+</html>

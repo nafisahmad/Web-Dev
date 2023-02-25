@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page 1</title>
+  </head>
+  <body>
+    <h1>Welcome to Page 1</h1>
+    <button onclick="fetchUsers()">Fetch Users</button>
+    <button onclick="deleteUsers()">Delete Users</button>
+    <button onclick="viewUsers()">User Details</button>
+
+    <script>
+      function fetchUsers() {
+        // Make an API call to https://randomuser.me/ and store the data in a database
+        // using the following Node.js code
+        axios
+          .get('https://randomuser.me/api/?results=50')
+          .then((response) => {
+            const users = response.data.results;
+            const connection = mysql.createConnection({
+              host: 'localhost',
+              user: 'root',
+              password: 'Helios@300',
+              database: 'user',
+            });
+            connection.connect();
+            users.forEach((user) => {
+              const sql =
+                'INSERT INTO users (name, email, phone) VALUES (?, ?, ?)';
+              connection.query(
+                sql,
+                [
+                  user.name.first + ' ' + user.name.last,
+                  user.email,
+                  user.phone,
+                ],
+                (error, results, fields) => {
+                  if (error) throw error;
+                }
+              );
+            });
+            connection.end();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      function deleteUsers() {
+        // Delete all entries in the database using the following Node.js code
+        const connection = mysql.createConnection({
+          host: 'localhost',
+          user: 'root',
+          password: 'Helios@300',
+          database: 'user',
+        });
+        connection.connect();
+        const sql = 'DELETE FROM users';
+        connection.query(sql, (error, results, fields) => {
+          if (error) throw error;
+        });
+        connection.end();
+      }
+
+      function viewUsers() {
+        // Redirect the user to the second page using the following code
+        window.location.href = '/users';
+      }
+    </script>
+  </body>
+</html>
