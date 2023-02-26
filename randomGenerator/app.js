@@ -26,16 +26,16 @@ con.connect(function (err) {
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 
-  fetch('https://randomuser.me/api/?results=5')
-    .then((res) => res.json())
-    .then((res) => console.log(res.results[0].name.first));
+    fetch('https://randomuser.me/api/?results=5')
+      .then((res) => res.json())
+      .then((res) => console.log(res.results[0].name.first));
 
-  let tableData = '';
-  [res].map((values) => {
-    //  tableData += `<h1>${values.email} </h1>`;
-    tableData += `<h1>${values.email} </h1>`;
-  });
-//   document.getElementById('table-body').innerHTML = tableData;
+    let tableData = '';
+    [res].map((values) => {
+      //  tableData += `<h1>${values.email} </h1>`;
+      tableData += `<h1>${values.email} </h1>`;
+    });
+    document.getElementById('tablebody').innerText = tableData;
 });
 
 // Server

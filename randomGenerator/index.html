@@ -18,9 +18,15 @@
   <body>
     <div class="text-center">
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary">Fetch Users</button>
-        <button type="button" class="btn btn-secondary">Delete Users</button>
-        <button type="button" class="btn btn-secondary">User Details</button>
+        <button type="button" class="btn btn-secondary" onclick="fetchUsers()">
+          Fetch Users
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="fetchUsers()">
+          Delete Users
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="fetchUsers()">
+          User Details
+        </button>
       </div>
       <br />
       <h1>Users</h1>
@@ -36,15 +42,31 @@
             <th scope="col">Country</th>
           </tr>
         </thead>
-        <tbody id="table-body">
-          <tr>
+        <tbody id="tablebody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      function fetchUsers() {
+        fetch('https://randomuser.me/api/?results=5')
+          .then((res) => res.json())
+          .then((res) => console.log(res.results[0]));
+
+        let tableData = '';
+        [res].map((values) => {
+          //  tableData += `<h1>${values.email} </h1>`;
+          // tableData += `<h1>${values.email} </h1>`;
+          res.render(
+            (tableData += `<tr>
             <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          </tr>`)
+          );
+        });
+        document.getElementById('tablebody').innerText = tableData;
+      }
+    </script>
   </body>
 </html>
